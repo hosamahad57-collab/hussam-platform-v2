@@ -1,7 +1,7 @@
-# 🏛️ Hussam Platform v2.0
+# 🏛️ منصة الحسام اليمنية (Hussam Yemeni Sovereign Platform v2.0)
 
-> **Sovereign Multi-Tenant Orchestration Engine & Local Domain Architecture**
-> Designed & Engineered by **Dr. Hussam Al-Shargabi**.
+> Developed & Owned by **Dr. Hussam Al-Shargabi** (Yemen - Taiz).
+> Contact: +967 775036687 | +967 737939054
 
 ---
 
@@ -36,3 +36,10 @@ chmod +x start_app_v2.sh
 ./start_app_v2.sh
 
 ```
+
+---
+
+## 📞 Support & Contact
+
+Developed & Owned by **Dr. Hussam Al-Shargabi** (Yemen - Taiz).
+Contact: +967 775036687 | +967 737939054
