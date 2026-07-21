@@ -1,0 +1,29 @@
+{
+    "title": "tenant_settings",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "tenant_id": {
+            "type": "integer"
+        },
+        "setting_key": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "setting_value": {
+            "type": "string"
+        },
+        "category": {
+            "type": "string",
+            "maxLength": 100,
+            "default": "general"
+        }
+    },
+    "required": [
+        "tenant_id",
+        "setting_key",
+        "setting_value"
+    ]
+}

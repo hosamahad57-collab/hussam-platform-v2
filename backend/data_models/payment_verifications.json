@@ -1,0 +1,47 @@
+{
+    "title": "payment_verifications",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "tenant_id": {
+            "type": "integer"
+        },
+        "gateway": {
+            "type": "string",
+            "maxLength": 100
+        },
+        "reference_number": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "amount": {
+            "type": "number"
+        },
+        "currency": {
+            "type": "string",
+            "maxLength": 10,
+            "default": "YER"
+        },
+        "sender_name": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "status": {
+            "type": "string",
+            "maxLength": 50,
+            "default": "pending"
+        },
+        "verified_at": {
+            "type": "string",
+            "maxLength": 50
+        }
+    },
+    "required": [
+        "tenant_id",
+        "gateway",
+        "reference_number",
+        "amount"
+    ]
+}

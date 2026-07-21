@@ -1,0 +1,56 @@
+{
+    "title": "products",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "tenant_id": {
+            "type": "integer"
+        },
+        "name": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "description": {
+            "type": "string"
+        },
+        "price_usd": {
+            "type": "number"
+        },
+        "price_yer": {
+            "type": "number"
+        },
+        "price_sar": {
+            "type": "number"
+        },
+        "stock": {
+            "type": "integer",
+            "default": 0
+        },
+        "category": {
+            "type": "string",
+            "maxLength": 100
+        },
+        "image_url": {
+            "type": "string",
+            "maxLength": 500
+        },
+        "vendor_name": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "status": {
+            "type": "string",
+            "maxLength": 50,
+            "default": "active"
+        }
+    },
+    "required": [
+        "tenant_id",
+        "name",
+        "price_usd",
+        "category",
+        "vendor_name"
+    ]
+}

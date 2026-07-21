@@ -1,0 +1,102 @@
+[
+    {
+        "tenant_id": 1,
+        "request_id": "req-apex-001-7f3a",
+        "model": "gpt-4-turbo",
+        "prompt": "Analyze quarterly revenue trends and predict Q4 growth",
+        "response": "Based on current trajectory, Q4 revenue projected at $1.45M (+16% QoQ)",
+        "tokens_used": 2450,
+        "latency_ms": 1823,
+        "status": "success"
+    },
+    {
+        "tenant_id": 1,
+        "request_id": "req-apex-002-8b2c",
+        "model": "claude-3-opus",
+        "prompt": "Generate compliance report for SOC2 audit",
+        "response": "SOC2 Type II compliance report generated. 47 controls evaluated, 45 passing.",
+        "tokens_used": 8900,
+        "latency_ms": 4521,
+        "status": "success"
+    },
+    {
+        "tenant_id": 1,
+        "request_id": "req-apex-003-9d1e",
+        "model": "gpt-4-turbo",
+        "prompt": "Classify incoming support tickets by priority",
+        "response": "Batch classified: 12 critical, 34 high, 89 medium, 156 low",
+        "tokens_used": 1200,
+        "latency_ms": 890,
+        "status": "success"
+    },
+    {
+        "tenant_id": 2,
+        "request_id": "req-nova-001-a4f5",
+        "model": "claude-3-sonnet",
+        "prompt": "Summarize customer feedback from last 30 days",
+        "response": "Key themes: performance (+45%), pricing concerns (-12%), feature requests (API webhooks, SSO)",
+        "tokens_used": 3400,
+        "latency_ms": 2100,
+        "status": "success"
+    },
+    {
+        "tenant_id": 2,
+        "request_id": "req-nova-002-b6g7",
+        "model": "gpt-4",
+        "prompt": "Generate API documentation for v2.1 endpoints",
+        "response": "Documentation generated for 23 endpoints across 5 resource groups",
+        "tokens_used": 12000,
+        "latency_ms": 6780,
+        "status": "success"
+    },
+    {
+        "tenant_id": 3,
+        "request_id": "req-zen-001-c8h9",
+        "model": "gpt-4-turbo",
+        "prompt": "Analyze protein folding simulation results batch #447",
+        "response": "Analysis complete. 3 novel configurations identified with stability scores >0.92",
+        "tokens_used": 5600,
+        "latency_ms": 3200,
+        "status": "success"
+    },
+    {
+        "tenant_id": 3,
+        "request_id": "req-zen-002-d0j1",
+        "model": "claude-3-opus",
+        "prompt": "Cross-reference genomic markers with treatment outcomes",
+        "response": "Error: Rate limit exceeded for tenant tier",
+        "tokens_used": 0,
+        "latency_ms": 45,
+        "status": "error"
+    },
+    {
+        "tenant_id": 5,
+        "request_id": "req-helix-001-e2k3",
+        "model": "gpt-4",
+        "prompt": "Optimize database query patterns for multi-tenant isolation",
+        "response": "Recommended: Row-level security with tenant_id partition key, estimated 40% latency reduction",
+        "tokens_used": 1800,
+        "latency_ms": 1450,
+        "status": "success"
+    },
+    {
+        "tenant_id": 5,
+        "request_id": "req-helix-002-f4l5",
+        "model": "claude-3-haiku",
+        "prompt": "Generate unit test suite for payment module",
+        "response": "Generated 34 test cases covering edge cases, race conditions, and idempotency",
+        "tokens_used": 4200,
+        "latency_ms": 1890,
+        "status": "success"
+    },
+    {
+        "tenant_id": 1,
+        "request_id": "req-apex-004-g6m7",
+        "model": "gpt-4-turbo",
+        "prompt": "Detect anomalies in transaction patterns last 24h",
+        "response": "2 anomalies detected: unusual volume spike at 03:00 UTC, duplicate transaction IDs",
+        "tokens_used": 3100,
+        "latency_ms": 2340,
+        "status": "success"
+    }
+]

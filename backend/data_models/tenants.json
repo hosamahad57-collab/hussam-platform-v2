@@ -1,0 +1,40 @@
+{
+    "title": "tenants",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "name": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "domain": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "status": {
+            "type": "string",
+            "maxLength": 50,
+            "default": "active"
+        },
+        "plan": {
+            "type": "string",
+            "maxLength": 50,
+            "default": "enterprise"
+        },
+        "max_accounts": {
+            "type": "integer",
+            "default": 100
+        },
+        "metadata_json": {
+            "type": "string",
+            "default": "{}"
+        }
+    },
+    "required": [
+        "name",
+        "domain",
+        "status"
+    ]
+}

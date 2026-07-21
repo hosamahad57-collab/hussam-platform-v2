@@ -1,0 +1,56 @@
+{
+    "title": "shipments",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "tenant_id": {
+            "type": "integer"
+        },
+        "order_reference": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "origin_governorate": {
+            "type": "string",
+            "maxLength": 100
+        },
+        "destination_governorate": {
+            "type": "string",
+            "maxLength": 100
+        },
+        "carrier": {
+            "type": "string",
+            "maxLength": 100
+        },
+        "status": {
+            "type": "string",
+            "maxLength": 50,
+            "default": "in_transit"
+        },
+        "estimated_days": {
+            "type": "integer",
+            "default": 3
+        },
+        "tracking_code": {
+            "type": "string",
+            "maxLength": 100
+        },
+        "weight_kg": {
+            "type": "number",
+            "default": 1.0
+        },
+        "shipping_cost_yer": {
+            "type": "number",
+            "default": 0
+        }
+    },
+    "required": [
+        "tenant_id",
+        "order_reference",
+        "origin_governorate",
+        "destination_governorate",
+        "carrier"
+    ]
+}

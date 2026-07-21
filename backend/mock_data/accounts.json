@@ -1,0 +1,82 @@
+[
+    {
+        "tenant_id": 1,
+        "name": "Operating Revenue",
+        "account_type": "revenue",
+        "balance": 1250000.0,
+        "currency": "USD",
+        "status": "active"
+    },
+    {
+        "tenant_id": 1,
+        "name": "Infrastructure Costs",
+        "account_type": "expense",
+        "balance": 340000.0,
+        "currency": "USD",
+        "status": "active"
+    },
+    {
+        "tenant_id": 1,
+        "name": "AI Compute Credits",
+        "account_type": "asset",
+        "balance": 89500.0,
+        "currency": "USD",
+        "status": "active"
+    },
+    {
+        "tenant_id": 2,
+        "name": "SaaS Subscriptions",
+        "account_type": "revenue",
+        "balance": 780000.0,
+        "currency": "EUR",
+        "status": "active"
+    },
+    {
+        "tenant_id": 2,
+        "name": "Cloud Services",
+        "account_type": "expense",
+        "balance": 156000.0,
+        "currency": "EUR",
+        "status": "active"
+    },
+    {
+        "tenant_id": 3,
+        "name": "Research Grants",
+        "account_type": "revenue",
+        "balance": 420000.0,
+        "currency": "USD",
+        "status": "active"
+    },
+    {
+        "tenant_id": 3,
+        "name": "Lab Equipment",
+        "account_type": "asset",
+        "balance": 275000.0,
+        "currency": "USD",
+        "status": "active"
+    },
+    {
+        "tenant_id": 4,
+        "name": "Quantum Compute",
+        "account_type": "asset",
+        "balance": 950000.0,
+        "currency": "USD",
+        "status": "frozen"
+    },
+    {
+        "tenant_id": 5,
+        "name": "Platform Revenue",
+        "account_type": "revenue",
+        "balance": 560000.0,
+        "currency": "GBP",
+        "status": "active"
+    },
+    {
+        "tenant_id": 5,
+        "name": "Development Costs",
+        "account_type": "expense",
+        "balance": 234000.0,
+        "currency": "GBP",
+        "status": "active"
+    }
+]

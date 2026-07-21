@@ -1,0 +1,42 @@
+{
+    "title": "ledger_transactions",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "tenant_id": {
+            "type": "integer"
+        },
+        "ledger_entry_id": {
+            "type": "integer"
+        },
+        "debit_account": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "credit_account": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "amount": {
+            "type": "number"
+        },
+        "status": {
+            "type": "string",
+            "maxLength": 50,
+            "default": "completed"
+        },
+        "memo": {
+            "type": "string",
+            "maxLength": 500
+        }
+    },
+    "required": [
+        "tenant_id",
+        "ledger_entry_id",
+        "debit_account",
+        "credit_account",
+        "amount"
+    ]
+}

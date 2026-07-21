@@ -1,0 +1,39 @@
+{
+    "title": "accounts",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "tenant_id": {
+            "type": "integer"
+        },
+        "name": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "account_type": {
+            "type": "string",
+            "maxLength": 50
+        },
+        "balance": {
+            "type": "number",
+            "default": 0
+        },
+        "currency": {
+            "type": "string",
+            "maxLength": 10,
+            "default": "USD"
+        },
+        "status": {
+            "type": "string",
+            "maxLength": 50,
+            "default": "active"
+        }
+    },
+    "required": [
+        "tenant_id",
+        "name",
+        "account_type"
+    ]
+}

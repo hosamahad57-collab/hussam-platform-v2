@@ -1,0 +1,137 @@
+[
+    {
+        "tenant_id": 1,
+        "account_id": 1,
+        "description": "Enterprise License Q3 2026",
+        "amount": 125000.0,
+        "entry_type": "credit",
+        "reference_id": "INV-2026-0891",
+        "status": "posted"
+    },
+    {
+        "tenant_id": 1,
+        "account_id": 1,
+        "description": "API Usage Overage - June",
+        "amount": 8750.0,
+        "entry_type": "credit",
+        "reference_id": "INV-2026-0892",
+        "status": "posted"
+    },
+    {
+        "tenant_id": 1,
+        "account_id": 2,
+        "description": "AWS Infrastructure - July",
+        "amount": 42000.0,
+        "entry_type": "debit",
+        "reference_id": "PO-2026-1544",
+        "status": "posted"
+    },
+    {
+        "tenant_id": 1,
+        "account_id": 3,
+        "description": "GPU Cluster Allocation",
+        "amount": 15000.0,
+        "entry_type": "debit",
+        "reference_id": "AI-2026-0334",
+        "status": "pending"
+    },
+    {
+        "tenant_id": 2,
+        "account_id": 4,
+        "description": "Monthly SaaS - 450 seats",
+        "amount": 67500.0,
+        "entry_type": "credit",
+        "reference_id": "SUB-2026-2201",
+        "status": "posted"
+    },
+    {
+        "tenant_id": 2,
+        "account_id": 5,
+        "description": "Azure Compute - July",
+        "amount": 23400.0,
+        "entry_type": "debit",
+        "reference_id": "PO-2026-1545",
+        "status": "posted"
+    },
+    {
+        "tenant_id": 3,
+        "account_id": 6,
+        "description": "NIH Grant Disbursement",
+        "amount": 75000.0,
+        "entry_type": "credit",
+        "reference_id": "GRT-2026-0089",
+        "status": "posted"
+    },
+    {
+        "tenant_id": 3,
+        "account_id": 7,
+        "description": "Quantum Processor Purchase",
+        "amount": 180000.0,
+        "entry_type": "debit",
+        "reference_id": "PO-2026-1546",
+        "status": "pending"
+    },
+    {
+        "tenant_id": 5,
+        "account_id": 9,
+        "description": "Platform Fees - June",
+        "amount": 45000.0,
+        "entry_type": "credit",
+        "reference_id": "PLT-2026-0567",
+        "status": "posted"
+    },
+    {
+        "tenant_id": 5,
+        "account_id": 10,
+        "description": "Engineering Salaries",
+        "amount": 89000.0,
+        "entry_type": "debit",
+        "reference_id": "PAY-2026-0712",
+        "status": "posted"
+    },
+    {
+        "tenant_id": 1,
+        "account_id": 1,
+        "description": "Consulting Services Rendered",
+        "amount": 35000.0,
+        "entry_type": "credit",
+        "reference_id": "INV-2026-0893",
+        "status": "posted"
+    },
+    {
+        "tenant_id": 1,
+        "account_id": 2,
+        "description": "Security Audit - External",
+        "amount": 18500.0,
+        "entry_type": "debit",
+        "reference_id": "PO-2026-1547",
+        "status": "posted"
+    },
+    {
+        "tenant_id": 2,
+        "account_id": 4,
+        "description": "Annual License Renewal",
+        "amount": 250000.0,
+        "entry_type": "credit",
+        "reference_id": "LIC-2026-0045",
+        "status": "pending"
+    },
+    {
+        "tenant_id": 1,
+        "account_id": 3,
+        "description": "Model Training Batch",
+        "amount": 22000.0,
+        "entry_type": "debit",
+        "reference_id": "AI-2026-0335",
+        "status": "posted"
+    },
+    {
+        "tenant_id": 5,
+        "account_id": 9,
+        "description": "Enterprise Onboarding Fee",
+        "amount": 12000.0,
+        "entry_type": "credit",
+        "reference_id": "PLT-2026-0568",
+        "status": "posted"
+    }
+]

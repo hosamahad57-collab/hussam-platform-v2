@@ -1,0 +1,318 @@
+2026-07-21 10:42:16,090 - main - INFO - === Logging system initialized ===
+2026-07-21 10:42:16,090 - main - INFO - Log file: logs/app_20260721.log
+2026-07-21 10:42:16,090 - main - INFO - Log level: DEBUG
+2026-07-21 10:42:16,090 - main - INFO - Log date: 20260721
+2026-07-21 10:42:17,202 - main - INFO - Included router: routers.accounts.router
+2026-07-21 10:42:17,315 - main - INFO - Included router: routers.ai_logs.router
+2026-07-21 10:42:35,006 - main - INFO - Included router: routers.aihub.router
+2026-07-21 10:42:35,264 - main - INFO - Included router: routers.auth.router
+2026-07-21 10:42:35,340 - main - INFO - Included router: routers.compiler.router
+2026-07-21 10:42:35,408 - main - INFO - Included router: routers.dashboard.router
+2026-07-21 10:42:35,429 - main - INFO - Included router: routers.health.router
+2026-07-21 10:42:35,623 - main - INFO - Included router: routers.ledger.router
+2026-07-21 10:42:35,726 - main - INFO - Included router: routers.ledger_entries.router
+2026-07-21 10:42:35,821 - main - INFO - Included router: routers.ledger_transactions.router
+2026-07-21 10:42:36,173 - main - INFO - Included router: routers.logistics.router
+2026-07-21 10:42:36,269 - main - INFO - Included router: routers.marketplace.router
+2026-07-21 10:42:36,374 - main - INFO - Included router: routers.payment_verifications.router
+2026-07-21 10:42:36,425 - main - INFO - Included router: routers.payments_gateway.router
+2026-07-21 10:42:36,506 - main - INFO - Included router: routers.products.router
+2026-07-21 10:42:36,549 - main - INFO - Included router: routers.settings.router
+2026-07-21 10:42:36,642 - main - INFO - Included router: routers.shipments.router
+2026-07-21 10:42:37,027 - main - INFO - Included router: routers.storage.router
+2026-07-21 10:42:37,312 - main - INFO - Included router: routers.tenant_settings.router
+2026-07-21 10:42:37,431 - main - INFO - Included router: routers.tenants.router
+2026-07-21 10:42:37,499 - main - INFO - Included router: routers.user.router
+2026-07-21 10:42:37,501 - main - INFO - === Application startup initiated ===
+2026-07-21 10:42:37,501 - services.database - INFO - Ignore creating tables
+2026-07-21 10:42:37,501 - services.mock_data - INFO - Ignore initialize data
+2026-07-21 10:42:37,501 - services.auth - INFO - Ignore initialize admin
+2026-07-21 10:42:37,501 - main - INFO - === Application startup completed successfully ===
+2026-07-21 10:42:41,725 - dependencies.auth - DEBUG - Authentication required for request GET /api/v1/auth/me
+2026-07-21 10:42:57,261 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-07-21 10:42:57,261 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-07-21 10:42:57,767 - core.auth - DEBUG - Authentication token validated for user hash: 9e42908b
+2026-07-21 10:43:52,287 - dependencies.auth - DEBUG - Authentication required for request GET /api/v1/auth/me
+2026-07-21 10:44:13,077 - services.database - DEBUG - [DB_OP] Starting database close
+2026-07-21 10:44:13,077 - services.database - INFO - Database connections closed
+2026-07-21 10:44:13,077 - services.database - DEBUG - [DB_OP] Database close completed in 0.0004s
+2026-07-21 10:44:26,684 - main - INFO - === Logging system initialized ===
+2026-07-21 10:44:26,685 - main - INFO - Log file: logs/app_20260721.log
+2026-07-21 10:44:26,685 - main - INFO - Log level: DEBUG
+2026-07-21 10:44:26,685 - main - INFO - Log date: 20260721
+2026-07-21 10:44:26,815 - main - INFO - Included router: routers.accounts.router
+2026-07-21 10:44:26,850 - main - INFO - Included router: routers.ai_logs.router
+2026-07-21 10:44:27,710 - main - INFO - Included router: routers.aihub.router
+2026-07-21 10:44:27,730 - main - INFO - Included router: routers.auth.router
+2026-07-21 10:44:27,743 - main - INFO - Included router: routers.compiler.router
+2026-07-21 10:44:27,770 - main - INFO - Included router: routers.dashboard.router
+2026-07-21 10:44:27,773 - main - INFO - Included router: routers.health.router
+2026-07-21 10:44:27,782 - main - INFO - Included router: routers.ledger.router
+2026-07-21 10:44:27,812 - main - INFO - Included router: routers.ledger_entries.router
+2026-07-21 10:44:27,840 - main - INFO - Included router: routers.ledger_transactions.router
+2026-07-21 10:44:27,854 - main - INFO - Included router: routers.logistics.router
+2026-07-21 10:44:27,866 - main - INFO - Included router: routers.marketplace.router
+2026-07-21 10:44:27,905 - main - INFO - Included router: routers.payment_verifications.router
+2026-07-21 10:44:27,913 - main - INFO - Included router: routers.payments_gateway.router
+2026-07-21 10:44:27,950 - main - INFO - Included router: routers.products.router
+2026-07-21 10:44:27,965 - main - INFO - Included router: routers.settings.router
+2026-07-21 10:44:28,002 - main - INFO - Included router: routers.shipments.router
+2026-07-21 10:44:28,065 - main - INFO - Included router: routers.storage.router
+2026-07-21 10:44:28,162 - main - INFO - Included router: routers.tenant_settings.router
+2026-07-21 10:44:28,191 - main - INFO - Included router: routers.tenants.router
+2026-07-21 10:44:28,197 - main - INFO - Included router: routers.user.router
+2026-07-21 10:44:28,198 - main - INFO - === Application startup initiated ===
+2026-07-21 10:44:28,198 - services.database - INFO - Ignore creating tables
+2026-07-21 10:44:28,198 - services.mock_data - INFO - Ignore initialize data
+2026-07-21 10:44:28,198 - services.auth - INFO - Ignore initialize admin
+2026-07-21 10:44:28,199 - main - INFO - === Application startup completed successfully ===
+2026-07-21 10:45:20,366 - services.database - DEBUG - [DB_OP] Starting database close
+2026-07-21 10:45:20,366 - services.database - INFO - Database connections closed
+2026-07-21 10:45:20,366 - services.database - DEBUG - [DB_OP] Database close completed in 0.0005s
+2026-07-21 10:45:34,164 - main - INFO - === Logging system initialized ===
+2026-07-21 10:45:34,164 - main - INFO - Log file: logs/app_20260721.log
+2026-07-21 10:45:34,165 - main - INFO - Log level: DEBUG
+2026-07-21 10:45:34,165 - main - INFO - Log date: 20260721
+2026-07-21 10:45:34,311 - main - INFO - Included router: routers.accounts.router
+2026-07-21 10:45:34,347 - main - INFO - Included router: routers.ai_logs.router
+2026-07-21 10:45:35,303 - main - INFO - Included router: routers.aihub.router
+2026-07-21 10:45:35,321 - main - INFO - Included router: routers.auth.router
+2026-07-21 10:45:35,330 - main - INFO - Included router: routers.compiler.router
+2026-07-21 10:45:35,345 - main - INFO - Included router: routers.dashboard.router
+2026-07-21 10:45:35,348 - main - INFO - Included router: routers.health.router
+2026-07-21 10:45:35,359 - main - INFO - Included router: routers.ledger.router
+2026-07-21 10:45:35,393 - main - INFO - Included router: routers.ledger_entries.router
+2026-07-21 10:45:35,442 - main - INFO - Included router: routers.ledger_transactions.router
+2026-07-21 10:45:35,462 - main - INFO - Included router: routers.logistics.router
+2026-07-21 10:45:35,482 - main - INFO - Included router: routers.marketplace.router
+2026-07-21 10:45:35,520 - main - INFO - Included router: routers.payment_verifications.router
+2026-07-21 10:45:35,531 - main - INFO - Included router: routers.payments_gateway.router
+2026-07-21 10:45:35,565 - main - INFO - Included router: routers.products.router
+2026-07-21 10:45:35,579 - main - INFO - Included router: routers.settings.router
+2026-07-21 10:45:35,616 - main - INFO - Included router: routers.shipments.router
+2026-07-21 10:45:35,643 - main - INFO - Included router: routers.storage.router
+2026-07-21 10:45:35,755 - main - INFO - Included router: routers.tenant_settings.router
+2026-07-21 10:45:35,789 - main - INFO - Included router: routers.tenants.router
+2026-07-21 10:45:35,799 - main - INFO - Included router: routers.user.router
+2026-07-21 10:45:35,802 - main - INFO - === Application startup initiated ===
+2026-07-21 10:45:35,806 - services.database - INFO - Ignore creating tables
+2026-07-21 10:45:35,806 - services.mock_data - INFO - Ignore initialize data
+2026-07-21 10:45:35,806 - services.auth - INFO - Ignore initialize admin
+2026-07-21 10:45:35,806 - main - INFO - === Application startup completed successfully ===
+2026-07-21 10:50:12,159 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-07-21 10:50:12,159 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-07-21 10:50:12,172 - core.auth - DEBUG - Authentication token validated for user hash: 9e42908b
+2026-07-21 10:51:26,117 - core.auth - DEBUG - Authentication token validated for user hash: 9e42908b
+2026-07-21 10:57:43,574 - core.auth - DEBUG - Authentication token validated for user hash: 9e42908b
+2026-07-21 11:17:50,505 - core.auth - DEBUG - Authentication token validated for user hash: 9e42908b
+2026-07-21 11:18:08,321 - services.database - DEBUG - [DB_OP] Starting database close
+2026-07-21 11:18:08,322 - services.database - INFO - Database connections closed
+2026-07-21 11:18:08,322 - services.database - DEBUG - [DB_OP] Database close completed in 0.0005s
+2026-07-21 11:18:09,676 - main - INFO - === Logging system initialized ===
+2026-07-21 11:18:09,677 - main - INFO - Log file: logs/app_20260721.log
+2026-07-21 11:18:09,677 - main - INFO - Log level: DEBUG
+2026-07-21 11:18:09,677 - main - INFO - Log date: 20260721
+2026-07-21 11:18:09,804 - main - INFO - Included router: routers.accounts.router
+2026-07-21 11:18:09,843 - main - INFO - Included router: routers.ai_logs.router
+2026-07-21 11:18:10,661 - main - INFO - Included router: routers.aihub.router
+2026-07-21 11:18:10,684 - main - INFO - Included router: routers.auth.router
+2026-07-21 11:18:10,696 - main - INFO - Included router: routers.compiler.router
+2026-07-21 11:18:10,712 - main - INFO - Included router: routers.dashboard.router
+2026-07-21 11:18:10,714 - main - INFO - Included router: routers.health.router
+2026-07-21 11:18:10,723 - main - INFO - Included router: routers.ledger.router
+2026-07-21 11:18:10,763 - main - INFO - Included router: routers.ledger_entries.router
+2026-07-21 11:18:10,800 - main - INFO - Included router: routers.ledger_transactions.router
+2026-07-21 11:18:10,870 - main - INFO - Included router: routers.logistics.router
+2026-07-21 11:18:10,887 - main - INFO - Included router: routers.marketplace.router
+2026-07-21 11:18:10,922 - main - INFO - Included router: routers.payment_verifications.router
+2026-07-21 11:18:10,930 - main - INFO - Included router: routers.payments_gateway.router
+2026-07-21 11:18:10,961 - main - INFO - Included router: routers.products.router
+2026-07-21 11:18:10,973 - main - INFO - Included router: routers.settings.router
+2026-07-21 11:18:11,004 - main - INFO - Included router: routers.shipments.router
+2026-07-21 11:18:11,062 - main - INFO - Included router: routers.storage.router
+2026-07-21 11:18:11,162 - main - INFO - Included router: routers.tenant_settings.router
+2026-07-21 11:18:11,193 - main - INFO - Included router: routers.tenants.router
+2026-07-21 11:18:11,203 - main - INFO - Included router: routers.user.router
+2026-07-21 11:18:11,204 - main - INFO - === Application startup initiated ===
+2026-07-21 11:18:11,204 - services.database - INFO - Ignore creating tables
+2026-07-21 11:18:11,204 - services.mock_data - INFO - Ignore initialize data
+2026-07-21 11:18:11,204 - services.auth - INFO - Ignore initialize admin
+2026-07-21 11:18:11,204 - main - INFO - === Application startup completed successfully ===
+2026-07-21 11:25:36,528 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-07-21 11:25:36,528 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-07-21 11:25:36,541 - core.auth - DEBUG - Authentication token validated for user hash: 9e42908b
+2026-07-21 11:28:11,520 - services.database - DEBUG - [DB_OP] Starting database close
+2026-07-21 11:28:11,520 - services.database - INFO - Database connections closed
+2026-07-21 11:28:11,521 - services.database - DEBUG - [DB_OP] Database close completed in 0.0003s
+2026-07-21 12:26:37,449 - main - INFO - === Logging system initialized ===
+2026-07-21 12:26:37,449 - main - INFO - Log file: logs/app_20260721.log
+2026-07-21 12:26:37,450 - main - INFO - Log level: DEBUG
+2026-07-21 12:26:37,450 - main - INFO - Log date: 20260721
+2026-07-21 12:26:39,035 - main - INFO - Included router: routers.accounts.router
+2026-07-21 12:26:39,200 - main - INFO - Included router: routers.ai_logs.router
+2026-07-21 12:26:58,439 - main - INFO - Included router: routers.aihub.router
+2026-07-21 12:26:58,558 - main - INFO - Included router: routers.auth.router
+2026-07-21 12:26:58,576 - main - INFO - Included router: routers.compiler.router
+2026-07-21 12:26:58,618 - main - INFO - Included router: routers.dashboard.router
+2026-07-21 12:26:58,706 - main - INFO - Included router: routers.health.router
+2026-07-21 12:26:58,735 - main - INFO - Included router: routers.ledger.router
+2026-07-21 12:26:58,795 - main - INFO - Included router: routers.ledger_entries.router
+2026-07-21 12:26:58,970 - main - INFO - Included router: routers.ledger_transactions.router
+2026-07-21 12:26:59,045 - main - INFO - Included router: routers.logistics.router
+2026-07-21 12:26:59,130 - main - INFO - Included router: routers.marketplace.router
+2026-07-21 12:26:59,220 - main - INFO - Included router: routers.payment_verifications.router
+2026-07-21 12:26:59,250 - main - INFO - Included router: routers.payments_gateway.router
+2026-07-21 12:26:59,354 - main - INFO - Included router: routers.products.router
+2026-07-21 12:26:59,393 - main - INFO - Included router: routers.settings.router
+2026-07-21 12:26:59,518 - main - INFO - Included router: routers.shipments.router
+2026-07-21 12:26:59,667 - main - INFO - Included router: routers.storage.router
+2026-07-21 12:26:59,843 - main - INFO - Included router: routers.tenant_settings.router
+2026-07-21 12:26:59,914 - main - INFO - Included router: routers.tenants.router
+2026-07-21 12:27:00,004 - main - INFO - Included router: routers.user.router
+2026-07-21 12:27:00,006 - main - INFO - === Application startup initiated ===
+2026-07-21 12:27:00,006 - services.database - INFO - Ignore creating tables
+2026-07-21 12:27:00,006 - services.mock_data - INFO - Ignore initialize data
+2026-07-21 12:27:00,006 - services.auth - INFO - Ignore initialize admin
+2026-07-21 12:27:00,006 - main - INFO - === Application startup completed successfully ===
+2026-07-21 12:27:04,879 - dependencies.auth - DEBUG - Authentication required for request GET /api/v1/auth/me
+2026-07-21 12:27:17,508 - services.database - DEBUG - [DB_OP] Starting database close
+2026-07-21 12:27:17,509 - services.database - INFO - Database connections closed
+2026-07-21 12:27:17,509 - services.database - DEBUG - [DB_OP] Database close completed in 0.0004s
+2026-07-21 12:27:31,554 - main - INFO - === Logging system initialized ===
+2026-07-21 12:27:31,554 - main - INFO - Log file: logs/app_20260721.log
+2026-07-21 12:27:31,554 - main - INFO - Log level: DEBUG
+2026-07-21 12:27:31,555 - main - INFO - Log date: 20260721
+2026-07-21 12:27:31,688 - main - INFO - Included router: routers.accounts.router
+2026-07-21 12:27:31,731 - main - INFO - Included router: routers.ai_logs.router
+2026-07-21 12:27:32,544 - main - INFO - Included router: routers.aihub.router
+2026-07-21 12:27:32,559 - main - INFO - Included router: routers.auth.router
+2026-07-21 12:27:32,569 - main - INFO - Included router: routers.compiler.router
+2026-07-21 12:27:32,583 - main - INFO - Included router: routers.dashboard.router
+2026-07-21 12:27:32,585 - main - INFO - Included router: routers.health.router
+2026-07-21 12:27:32,591 - main - INFO - Included router: routers.ledger.router
+2026-07-21 12:27:32,620 - main - INFO - Included router: routers.ledger_entries.router
+2026-07-21 12:27:32,649 - main - INFO - Included router: routers.ledger_transactions.router
+2026-07-21 12:27:32,659 - main - INFO - Included router: routers.logistics.router
+2026-07-21 12:27:32,670 - main - INFO - Included router: routers.marketplace.router
+2026-07-21 12:27:32,702 - main - INFO - Included router: routers.payment_verifications.router
+2026-07-21 12:27:32,710 - main - INFO - Included router: routers.payments_gateway.router
+2026-07-21 12:27:32,741 - main - INFO - Included router: routers.products.router
+2026-07-21 12:27:32,754 - main - INFO - Included router: routers.settings.router
+2026-07-21 12:27:32,785 - main - INFO - Included router: routers.shipments.router
+2026-07-21 12:27:32,812 - main - INFO - Included router: routers.storage.router
+2026-07-21 12:27:32,912 - main - INFO - Included router: routers.tenant_settings.router
+2026-07-21 12:27:32,950 - main - INFO - Included router: routers.tenants.router
+2026-07-21 12:27:32,958 - main - INFO - Included router: routers.user.router
+2026-07-21 12:27:32,960 - main - INFO - === Application startup initiated ===
+2026-07-21 12:27:32,961 - services.database - INFO - Ignore creating tables
+2026-07-21 12:27:32,961 - services.mock_data - INFO - Ignore initialize data
+2026-07-21 12:27:32,961 - services.auth - INFO - Ignore initialize admin
+2026-07-21 12:27:32,961 - main - INFO - === Application startup completed successfully ===
+2026-07-21 12:28:42,022 - services.database - DEBUG - [DB_OP] Starting database close
+2026-07-21 12:28:42,022 - services.database - INFO - Database connections closed
+2026-07-21 12:28:42,023 - services.database - DEBUG - [DB_OP] Database close completed in 0.0006s
+2026-07-21 12:28:55,867 - main - INFO - === Logging system initialized ===
+2026-07-21 12:28:55,868 - main - INFO - Log file: logs/app_20260721.log
+2026-07-21 12:28:55,868 - main - INFO - Log level: DEBUG
+2026-07-21 12:28:55,868 - main - INFO - Log date: 20260721
+2026-07-21 12:28:55,984 - main - INFO - Included router: routers.accounts.router
+2026-07-21 12:28:56,021 - main - INFO - Included router: routers.ai_logs.router
+2026-07-21 12:28:56,759 - main - INFO - Included router: routers.aihub.router
+2026-07-21 12:28:56,773 - main - INFO - Included router: routers.auth.router
+2026-07-21 12:28:56,781 - main - INFO - Included router: routers.compiler.router
+2026-07-21 12:28:56,794 - main - INFO - Included router: routers.dashboard.router
+2026-07-21 12:28:56,796 - main - INFO - Included router: routers.health.router
+2026-07-21 12:28:56,808 - main - INFO - Included router: routers.ledger.router
+2026-07-21 12:28:56,841 - main - INFO - Included router: routers.ledger_entries.router
+2026-07-21 12:28:56,870 - main - INFO - Included router: routers.ledger_transactions.router
+2026-07-21 12:28:56,881 - main - INFO - Included router: routers.logistics.router
+2026-07-21 12:28:56,896 - main - INFO - Included router: routers.marketplace.router
+2026-07-21 12:28:56,930 - main - INFO - Included router: routers.payment_verifications.router
+2026-07-21 12:28:56,945 - main - INFO - Included router: routers.payments_gateway.router
+2026-07-21 12:28:56,978 - main - INFO - Included router: routers.products.router
+2026-07-21 12:28:56,992 - main - INFO - Included router: routers.settings.router
+2026-07-21 12:28:57,031 - main - INFO - Included router: routers.shipments.router
+2026-07-21 12:28:57,063 - main - INFO - Included router: routers.storage.router
+2026-07-21 12:28:57,190 - main - INFO - Included router: routers.tenant_settings.router
+2026-07-21 12:28:57,225 - main - INFO - Included router: routers.tenants.router
+2026-07-21 12:28:57,232 - main - INFO - Included router: routers.user.router
+2026-07-21 12:28:57,233 - main - INFO - === Application startup initiated ===
+2026-07-21 12:28:57,233 - services.database - INFO - Ignore creating tables
+2026-07-21 12:28:57,233 - services.mock_data - INFO - Ignore initialize data
+2026-07-21 12:28:57,233 - services.auth - INFO - Ignore initialize admin
+2026-07-21 12:28:57,234 - main - INFO - === Application startup completed successfully ===
+2026-07-21 12:31:43,430 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-07-21 12:31:43,431 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-07-21 12:31:43,764 - core.auth - DEBUG - Authentication token validated for user hash: 9e42908b
+2026-07-21 12:45:42,869 - services.database - DEBUG - [DB_OP] Starting database close
+2026-07-21 12:45:42,869 - services.database - INFO - Database connections closed
+2026-07-21 12:45:42,869 - services.database - DEBUG - [DB_OP] Database close completed in 0.0003s
+2026-07-21 13:30:58,791 - main - INFO - === Logging system initialized ===
+2026-07-21 13:30:58,791 - main - INFO - Log file: logs/app_20260721.log
+2026-07-21 13:30:58,792 - main - INFO - Log level: DEBUG
+2026-07-21 13:30:58,792 - main - INFO - Log date: 20260721
+2026-07-21 13:31:01,288 - main - INFO - Included router: routers.accounts.router
+2026-07-21 13:31:01,393 - main - INFO - Included router: routers.ai_logs.router
+2026-07-21 13:31:24,850 - main - INFO - Included router: routers.aihub.router
+2026-07-21 13:31:25,104 - main - INFO - Included router: routers.auth.router
+2026-07-21 13:31:25,186 - main - INFO - Included router: routers.compiler.router
+2026-07-21 13:31:25,245 - main - INFO - Included router: routers.dashboard.router
+2026-07-21 13:31:25,262 - main - INFO - Included router: routers.health.router
+2026-07-21 13:31:25,307 - main - INFO - Included router: routers.ledger.router
+2026-07-21 13:31:25,467 - main - INFO - Included router: routers.ledger_entries.router
+2026-07-21 13:31:25,561 - main - INFO - Included router: routers.ledger_transactions.router
+2026-07-21 13:31:25,653 - main - INFO - Included router: routers.logistics.router
+2026-07-21 13:31:25,745 - main - INFO - Included router: routers.marketplace.router
+2026-07-21 13:31:25,863 - main - INFO - Included router: routers.payment_verifications.router
+2026-07-21 13:31:26,211 - main - INFO - Included router: routers.payments_gateway.router
+2026-07-21 13:31:26,374 - main - INFO - Included router: routers.products.router
+2026-07-21 13:31:26,460 - main - INFO - Included router: routers.settings.router
+2026-07-21 13:31:26,542 - main - INFO - Included router: routers.shipments.router
+2026-07-21 13:31:26,658 - main - INFO - Included router: routers.storage.router
+2026-07-21 13:31:26,934 - main - INFO - Included router: routers.tenant_settings.router
+2026-07-21 13:31:27,037 - main - INFO - Included router: routers.tenants.router
+2026-07-21 13:31:27,184 - main - INFO - Included router: routers.user.router
+2026-07-21 13:31:27,186 - main - INFO - === Application startup initiated ===
+2026-07-21 13:31:27,186 - services.database - INFO - Ignore creating tables
+2026-07-21 13:31:27,186 - services.mock_data - INFO - Ignore initialize data
+2026-07-21 13:31:27,186 - services.auth - INFO - Ignore initialize admin
+2026-07-21 13:31:27,186 - main - INFO - === Application startup completed successfully ===
+2026-07-21 13:34:45,188 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-07-21 13:34:45,188 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-07-21 13:34:45,423 - core.auth - DEBUG - Authentication token validated for user hash: 9e42908b
+2026-07-21 13:58:48,593 - services.database - DEBUG - [DB_OP] Starting database close
+2026-07-21 13:58:48,593 - services.database - INFO - Database connections closed
+2026-07-21 13:58:48,593 - services.database - DEBUG - [DB_OP] Database close completed in 0.0003s
+2026-07-21 16:05:58,141 - main - INFO - === Logging system initialized ===
+2026-07-21 16:05:58,141 - main - INFO - Log file: logs/app_20260721.log
+2026-07-21 16:05:58,141 - main - INFO - Log level: DEBUG
+2026-07-21 16:05:58,142 - main - INFO - Log date: 20260721
+2026-07-21 16:05:59,487 - main - INFO - Included router: routers.accounts.router
+2026-07-21 16:05:59,582 - main - INFO - Included router: routers.ai_logs.router
+2026-07-21 16:06:20,070 - main - INFO - Included router: routers.aihub.router
+2026-07-21 16:06:20,242 - main - INFO - Included router: routers.auth.router
+2026-07-21 16:06:20,311 - main - INFO - Included router: routers.compiler.router
+2026-07-21 16:06:20,396 - main - INFO - Included router: routers.dashboard.router
+2026-07-21 16:06:20,455 - main - INFO - Included router: routers.health.router
+2026-07-21 16:06:20,525 - main - INFO - Included router: routers.ledger.router
+2026-07-21 16:06:20,781 - main - INFO - Included router: routers.ledger_entries.router
+2026-07-21 16:06:20,885 - main - INFO - Included router: routers.ledger_transactions.router
+2026-07-21 16:06:20,967 - main - INFO - Included router: routers.logistics.router
+2026-07-21 16:06:21,050 - main - INFO - Included router: routers.marketplace.router
+2026-07-21 16:06:21,176 - main - INFO - Included router: routers.payment_verifications.router
+2026-07-21 16:06:21,322 - main - INFO - Included router: routers.payments_gateway.router
+2026-07-21 16:06:21,436 - main - INFO - Included router: routers.products.router
+2026-07-21 16:06:21,478 - main - INFO - Included router: routers.settings.router
+2026-07-21 16:06:21,570 - main - INFO - Included router: routers.shipments.router
+2026-07-21 16:06:21,668 - main - INFO - Included router: routers.storage.router
+2026-07-21 16:06:21,822 - main - INFO - Included router: routers.tenant_settings.router
+2026-07-21 16:06:22,076 - main - INFO - Included router: routers.tenants.router
+2026-07-21 16:06:22,224 - main - INFO - Included router: routers.user.router
+2026-07-21 16:06:22,226 - main - INFO - === Application startup initiated ===
+2026-07-21 16:06:22,226 - services.database - INFO - Ignore creating tables
+2026-07-21 16:06:22,226 - services.mock_data - INFO - Ignore initialize data
+2026-07-21 16:06:22,226 - services.auth - INFO - Ignore initialize admin
+2026-07-21 16:06:22,226 - main - INFO - === Application startup completed successfully ===
+2026-07-21 16:08:13,406 - core.config - DEBUG - Read dynamic attribute jwt_secret_key from environment variable JWT_SECRET_KEY
+2026-07-21 16:08:13,406 - core.config - DEBUG - Read dynamic attribute jwt_algorithm from environment variable JWT_ALGORITHM
+2026-07-21 16:08:13,617 - core.auth - DEBUG - Authentication token validated for user hash: 9e42908b

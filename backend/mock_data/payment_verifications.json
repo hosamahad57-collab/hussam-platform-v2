@@ -1,0 +1,82 @@
+[
+    {
+        "tenant_id": 1,
+        "gateway": "Al-Kuraimi (MFloos)",
+        "reference_number": "KRM-2026-445521",
+        "amount": 53994,
+        "currency": "YER",
+        "sender_name": "Ahmed Al-Hamdani",
+        "status": "approved",
+        "verified_at": "2026-07-15T14:30:00Z"
+    },
+    {
+        "tenant_id": 1,
+        "gateway": "Al-Kuraimi (MFloos)",
+        "reference_number": "KRM-2026-445589",
+        "amount": 20994,
+        "currency": "YER",
+        "sender_name": "Fatima Al-Zubairi",
+        "status": "approved",
+        "verified_at": "2026-07-15T16:45:00Z"
+    },
+    {
+        "tenant_id": 2,
+        "gateway": "Al-Najm Transfer",
+        "reference_number": "NJM-8891-2026-07",
+        "amount": 150000,
+        "currency": "YER",
+        "sender_name": "Mohammed Basurra",
+        "status": "pending",
+        "verified_at": ""
+    },
+    {
+        "tenant_id": 2,
+        "gateway": "Pocket (e-Wallet)",
+        "reference_number": "PKT-YM-20260715-7742",
+        "amount": 27000,
+        "currency": "YER",
+        "sender_name": "Saleh Al-Amri",
+        "status": "approved",
+        "verified_at": "2026-07-15T11:20:00Z"
+    },
+    {
+        "tenant_id": 3,
+        "gateway": "Cash on Delivery",
+        "reference_number": "COD-ORD-0895",
+        "amount": 72000,
+        "currency": "YER",
+        "sender_name": "Ali Al-Socotri",
+        "status": "pending",
+        "verified_at": ""
+    },
+    {
+        "tenant_id": 1,
+        "gateway": "Al-Kuraimi (MFloos)",
+        "reference_number": "KRM-2026-445601",
+        "amount": 7794,
+        "currency": "YER",
+        "sender_name": "Noor Al-Adeeb",
+        "status": "rejected",
+        "verified_at": "2026-07-16T09:00:00Z"
+    },
+    {
+        "tenant_id": 3,
+        "gateway": "Al-Najm Transfer",
+        "reference_number": "NJM-8895-2026-07",
+        "amount": 108000,
+        "currency": "YER",
+        "sender_name": "Yasmin Al-Hadrami",
+        "status": "approved",
+        "verified_at": "2026-07-16T10:15:00Z"
+    },
+    {
+        "tenant_id": 2,
+        "gateway": "Pocket (e-Wallet)",
+        "reference_number": "PKT-YM-20260716-7801",
+        "amount": 11100,
+        "currency": "YER",
+        "sender_name": "Hassan Al-Taizi",
+        "status": "approved",
+        "verified_at": "2026-07-16T12:30:00Z"
+    }
+]

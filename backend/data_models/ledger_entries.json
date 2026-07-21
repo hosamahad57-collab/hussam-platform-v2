@@ -1,0 +1,42 @@
+{
+    "title": "ledger_entries",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "tenant_id": {
+            "type": "integer"
+        },
+        "account_id": {
+            "type": "integer"
+        },
+        "description": {
+            "type": "string",
+            "maxLength": 500
+        },
+        "amount": {
+            "type": "number"
+        },
+        "entry_type": {
+            "type": "string",
+            "maxLength": 50
+        },
+        "reference_id": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "status": {
+            "type": "string",
+            "maxLength": 50,
+            "default": "posted"
+        }
+    },
+    "required": [
+        "tenant_id",
+        "account_id",
+        "description",
+        "amount",
+        "entry_type"
+    ]
+}

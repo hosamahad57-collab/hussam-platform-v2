@@ -1,0 +1,110 @@
+[
+    {
+        "tenant_id": 1,
+        "ledger_entry_id": 1,
+        "debit_account": "Accounts Receivable",
+        "credit_account": "Operating Revenue",
+        "amount": 125000.0,
+        "status": "completed",
+        "memo": "Q3 enterprise license payment received"
+    },
+    {
+        "tenant_id": 1,
+        "ledger_entry_id": 2,
+        "debit_account": "Accounts Receivable",
+        "credit_account": "Operating Revenue",
+        "amount": 8750.0,
+        "status": "completed",
+        "memo": "API overage billing processed"
+    },
+    {
+        "tenant_id": 1,
+        "ledger_entry_id": 3,
+        "debit_account": "Infrastructure Costs",
+        "credit_account": "Cash",
+        "amount": 42000.0,
+        "status": "completed",
+        "memo": "AWS monthly invoice settled"
+    },
+    {
+        "tenant_id": 1,
+        "ledger_entry_id": 4,
+        "debit_account": "AI Compute Credits",
+        "credit_account": "Cash",
+        "amount": 15000.0,
+        "status": "pending",
+        "memo": "GPU allocation pending approval"
+    },
+    {
+        "tenant_id": 2,
+        "ledger_entry_id": 5,
+        "debit_account": "Accounts Receivable",
+        "credit_account": "SaaS Subscriptions",
+        "amount": 67500.0,
+        "status": "completed",
+        "memo": "Monthly subscription auto-billed"
+    },
+    {
+        "tenant_id": 2,
+        "ledger_entry_id": 6,
+        "debit_account": "Cloud Services",
+        "credit_account": "Cash",
+        "amount": 23400.0,
+        "status": "completed",
+        "memo": "Azure compute charges"
+    },
+    {
+        "tenant_id": 3,
+        "ledger_entry_id": 7,
+        "debit_account": "Cash",
+        "credit_account": "Research Grants",
+        "amount": 75000.0,
+        "status": "completed",
+        "memo": "NIH grant funds received"
+    },
+    {
+        "tenant_id": 3,
+        "ledger_entry_id": 8,
+        "debit_account": "Lab Equipment",
+        "credit_account": "Accounts Payable",
+        "amount": 180000.0,
+        "status": "pending",
+        "memo": "Quantum processor on order"
+    },
+    {
+        "tenant_id": 5,
+        "ledger_entry_id": 9,
+        "debit_account": "Cash",
+        "credit_account": "Platform Revenue",
+        "amount": 45000.0,
+        "status": "completed",
+        "memo": "Platform fees collected"
+    },
+    {
+        "tenant_id": 5,
+        "ledger_entry_id": 10,
+        "debit_account": "Development Costs",
+        "credit_account": "Cash",
+        "amount": 89000.0,
+        "status": "completed",
+        "memo": "Engineering payroll processed"
+    },
+    {
+        "tenant_id": 1,
+        "ledger_entry_id": 11,
+        "debit_account": "Accounts Receivable",
+        "credit_account": "Operating Revenue",
+        "amount": 35000.0,
+        "status": "completed",
+        "memo": "Consulting engagement closed"
+    },
+    {
+        "tenant_id": 1,
+        "ledger_entry_id": 12,
+        "debit_account": "Infrastructure Costs",
+        "credit_account": "Cash",
+        "amount": 18500.0,
+        "status": "completed",
+        "memo": "Security audit payment"
+    }
+]

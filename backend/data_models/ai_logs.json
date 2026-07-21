@@ -1,0 +1,45 @@
+{
+    "title": "ai_logs",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "tenant_id": {
+            "type": "integer"
+        },
+        "request_id": {
+            "type": "string",
+            "maxLength": 255
+        },
+        "model": {
+            "type": "string",
+            "maxLength": 100
+        },
+        "prompt": {
+            "type": "string"
+        },
+        "response": {
+            "type": "string"
+        },
+        "tokens_used": {
+            "type": "integer",
+            "default": 0
+        },
+        "latency_ms": {
+            "type": "integer",
+            "default": 0
+        },
+        "status": {
+            "type": "string",
+            "maxLength": 50,
+            "default": "success"
+        }
+    },
+    "required": [
+        "tenant_id",
+        "request_id",
+        "model",
+        "prompt"
+    ]
+}

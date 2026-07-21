@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Apex Industries",
+        "domain": "apex.hussam.io",
+        "status": "active",
+        "plan": "enterprise",
+        "max_accounts": 250,
+        "metadata_json": "{\"region\":\"US-EAST\",\"tier\":\"sovereign\"}"
+    },
+    {
+        "name": "Nova Corp",
+        "domain": "nova.hussam.io",
+        "status": "active",
+        "plan": "enterprise",
+        "max_accounts": 150,
+        "metadata_json": "{\"region\":\"EU-WEST\",\"tier\":\"premium\"}"
+    },
+    {
+        "name": "Zenith Labs",
+        "domain": "zenith.hussam.io",
+        "status": "active",
+        "plan": "professional",
+        "max_accounts": 75,
+        "metadata_json": "{\"region\":\"AP-SOUTH\",\"tier\":\"standard\"}"
+    },
+    {
+        "name": "Quantum Dynamics",
+        "domain": "quantum.hussam.io",
+        "status": "suspended",
+        "plan": "enterprise",
+        "max_accounts": 200,
+        "metadata_json": "{\"region\":\"US-WEST\",\"tier\":\"sovereign\"}"
+    },
+    {
+        "name": "Helix Systems",
+        "domain": "helix.hussam.io",
+        "status": "active",
+        "plan": "professional",
+        "max_accounts": 100,
+        "metadata_json": "{\"region\":\"EU-CENTRAL\",\"tier\":\"premium\"}"
+    }
+]
