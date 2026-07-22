@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hussam-platform-backend"
+version = "2.0.0"
+description = "Sovereign Multi-Tenant Orchestration Engine & Local Domain Architecture"
+authors = [{ name = "Dr. Hussam Al-Shargabi" }]
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.100.0",
+    "uvicorn[standard]>=0.20.0",
+    "pydantic>=2.0"
+]
