@@ -1,0 +1,124 @@
+# REVIEW DRAFT ONLY - MANUAL PLACEMENT REQUIRED
+# CI Safety Net (Review Draft)
+# This file is a documentation artifact for human review. Do NOT place automatically.
+
+name: CI Safety Net (Review Draft)
+
+on:
+  workflow_dispatch: {}
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  lint-and-typecheck:
+    name: Lint and Typecheck (safety)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Backend: quick syntax check
+        run: |
+          echo "-- Backend quick syntax check --"
+          if [ -d "backend" ]; then
+            # Attempt to compile Python files to detect syntax errors only (no installs)
+            find backend -name "*.py" -print0 | xargs -0 -n 50 -- bash -c 'python -m py_compile "$@"' _ || true
+            echo "Python syntax check completed (syntax issues will be printed above if any)."
+          else
+            echo "backend/ directory not present; skipping backend syntax checks."
+          fi
+
+      - name: Frontend: lint/typecheck readiness
+        run: |
+          echo "-- Frontend lint/type-check readiness --"
+          if [ -f frontend/package.json ]; then
+            echo "Found frontend/package.json"
+            # Only attempt to run existing lint script if node_modules is present to avoid installs
+            if [ -d frontend/node_modules ]; then
+              cd frontend
+              if jq -e '.scripts.lint' package.json >/dev/null 2>&1; then
+                npm run lint || true
+              else
+                echo "No lint script defined in frontend/package.json; skipping."
+              fi
+            else
+              echo "node_modules not present; skipping frontend lint to avoid installs."
+            fi
+          else
+            echo "No frontend/package.json found; skipping frontend checks."
+          fi
+
+  security-secret-scan:
+    name: Repository Secret Scan (gitleaks) (review draft)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run gitleaks scan (report only)
+        # This step assumes gitleaks action; runner will need network access and permission
+        uses: zricethezav/gitleaks-action@v1
+        with:
+          args: --path=. --report-format=json --report-path=gitleaks-report.json || true
+
+      - name: Upload gitleaks report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gitleaks-report
+          path: gitleaks-report.json
+
+  alembic-integrity-check:
+    name: Alembic Integrity Check (static)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Static compile backend/alembic/env.py
+        run: |
+          echo "-- Alembic env static syntax check --"
+          if [ -f backend/alembic/env.py ]; then
+            python -m py_compile backend/alembic/env.py && echo "backend/alembic/env.py compiled successfully" || echo "Warning: syntax errors or missing deps (this step does not install packages)."
+          else
+            echo "backend/alembic/env.py not found"
+          fi
+
+      - name: List migration files and extract metadata
+        run: |
+          echo "-- Alembic versions listing (static parse) --"
+          if [ -d backend/alembic/versions ]; then
+            ls -la backend/alembic/versions || true
+            echo "Parsing revision/down_revision in migration files"
+            for f in backend/alembic/versions/*.py; do
+              echo "File: $f"
+              grep -n "revision:" "$f" || true
+              grep -n "down_revision:" "$f" || true
+              echo "----"
+            done
+          else
+            echo "backend/alembic/versions not present"
+          fi
+
+  smoke-test-placeholder:
+    name: Smoke Test Placeholder (no tests executed)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Placeholder
+        run: |
+          echo "Smoke test placeholder - no application tests are executed in this draft. Add real smoke tests in future iterations."
