@@ -27,6 +27,63 @@ log_debug() {
     echo "[DEBUG] $(date '+%Y-%m-%d %H:%M:%S') $1"
 }
 
+# Default allowlist for environment keys that may be imported from remote config
+# This is intentionally strict. Only keys listed here will be exported from remote configuration.
+ALLOWED_ENV_KEYS=(
+    "BACKEND_PORT"
+    "FRONTEND_PORT"
+    "VITE_API_BASE_URL"
+    "ENVIRONMENT"
+    "DEV_BASE_URL"
+    "OVERVIEW_TITLE"
+    "OVERVIEW_DESCRIPTION"
+    "OVERVIEW_LOGO_URL"
+    "OVERVIEW_DARK_LOGO_URL"
+)
+
+# Helper: check if a key is allowed
+is_allowed_key() {
+    local key="$1"
+    for k in "${ALLOWED_ENV_KEYS[@]}"; do
+        if [ "$k" = "$key" ]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+# Helper: validate environment variable name
+is_valid_env_key() {
+    local key="$1"
+    # Valid shell var name: starts with letter or underscore, followed by letters, digits, or underscores
+    if [[ "$key" =~ ^[A-Za-z_][A-Za-z0-9_]*$ ]]; then
+        return 0
+    fi
+    return 1
+}
+
+# Helper: validate that a value is safe (no newlines, no command substitution, no shell metacharacters)
+is_safe_env_value() {
+    local val="$1"
+
+    # Reject multiline values
+    if echo "$val" | grep -qP '\r|\n'; then
+        return 1
+    fi
+
+    # Reject characters/sequences commonly used for command injection
+    if echo "$val" | grep -q '\`\|\$\(|;\|&&\|||\|>|<'; then
+        return 1
+    fi
+
+    # Length limit (conservative)
+    if [ ${#val} -gt 2000 ]; then
+        return 1
+    fi
+
+    return 0
+}
+
 # Get local IP address
 get_local_ip() {
     # Try multiple methods to get local IP
@@ -373,27 +430,6 @@ except Exception as e:
     fi
 }
 
-# Check dirty signal and reload environment variables if dirty
-check_and_reload_env_if_dirty() {
-    local local_ip=$1
-    local backend_port=$2
-    local frontend_port=$3
-    local local_mode=$4
-    
-    log_info "Checking dirty signal status..."
-    
-    if get_dirty_signal; then
-        log_warning "Dirty signal detected, reloading environment variables..."
-        cd "$BACKEND_DIR"
-        process_env_with_placeholders "$local_ip" "$backend_port" "$frontend_port" "$local_mode"
-        log_success "Environment variables reloaded successfully"
-        return 0
-    else
-        log_info "Dirty signal is clean, no need to reload environment variables"
-        return 0
-    fi
-}
-
 
 # Fetch environment variables from API
 fetch_env_from_api() {
@@ -484,12 +520,12 @@ try:
             conf_key = item.get('conf_key', '')
             conf_value = item.get('conf_value', '')
             if conf_key:
-                print(f\"{conf_key}={conf_value}\")
+                print(f"{conf_key}={conf_value}")
     else:
-        print(f\"Error: API returned code {data.get('code')}\", file=sys.stderr)
+        print(f"Error: API returned code {data.get('code')}", file=sys.stderr)
         sys.exit(1)
 except Exception as e:
-    print(f\"Error parsing JSON: {e}\", file=sys.stderr)
+    print(f"Error parsing JSON: {e}", file=sys.stderr)
     sys.exit(1)
 ")
         local parse_exit_code=$?
@@ -513,7 +549,7 @@ except Exception as e:
             if [ -n "$key" ] && [ -n "$value" ]; then
                 env_content="${env_content}${key}=${value}"$'\n'
             fi
-        done < <(echo "$response" | grep -o '"conf_key":"[^"]*","conf_value":"[^"]*"')
+        done < <(echo "$response" | grep -o '"conf_key":"[^\"]*","conf_value":"[^\"]*"')
         
         if [ -n "$env_content" ]; then
             { log_success "Successfully fetched environment variables from API (manual parsing)"; } >&2
@@ -579,7 +615,7 @@ process_env_with_placeholders() {
                 dev_base_url="${BASH_REMATCH[1]}"
                 # Remove leading/trailing whitespace and quotes
                 dev_base_url=$(echo "$dev_base_url" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
-                dev_base_url=$(echo "$dev_base_url" | sed 's/^["'\'']//;s/["'\'']$//')
+                dev_base_url=$(echo "$dev_base_url" | sed 's/^["'\''']//;s/["'\'']$//')
                 
                 # Extract domain part (remove protocol if present)
                 # DEV_BASE_URL format: protocol://domain[:port] or domain[:port] (no path)
@@ -590,8 +626,8 @@ process_env_with_placeholders() {
                     dev_base_domain="$dev_base_url"
                 fi
                 
-                log_info "Found DEV_BASE_URL: $dev_base_url"
-                log_info "Extracted domain: $dev_base_domain"
+                log_info "Found DEV_BASE_URL: [REDACTED]"
+                log_info "Extracted domain: [REDACTED]"
                 break
             fi
         done <<< "$env_content"
@@ -620,54 +656,83 @@ process_env_with_placeholders() {
             continue
         fi
         
-        processed_count=$((processed_count + 1))
-        log_debug "Line $line_count: Before replacement: $line"
-        
-        # Apply placeholder replacements directly to the line
-        if [ "$local_mode" = true ]; then
-            # Local mode: Replace domain placeholders with local IP and ports
-            line="${line//\$\$BACKEND_DOMAIN\$\$/$local_ip:$backend_port}"
-            line="${line//\$\$FRONTEND_DOMAIN\$\$/$local_ip:$frontend_port}"
-        else
-            # Non-local mode: Replace domain placeholders with DEV_BASE_URL domain
-            if [ -n "$dev_base_domain" ]; then
-                line="${line//\$\$BACKEND_DOMAIN\$\$/$dev_base_domain}"
-                line="${line//\$\$FRONTEND_DOMAIN\$\$/$dev_base_domain}"
-            else
-                line="${line//\$\$BACKEND_DOMAIN\$\$/\/}"
-                line="${line//\$\$FRONTEND_DOMAIN\$\$/\/}"
+        # Parse key and value safely
+        if [[ "$line" =~ ^[[:space:]]*([^=]+)=(.*)$ ]]; then
+            local key="${BASH_REMATCH[1]}"
+            local value="${BASH_REMATCH[2]}"
+            key=$(echo "$key" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+            value=$(echo "$value" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+            value=$(echo "$value" | sed 's/^\"//;s/\"$//;s/^\'\''//;s/\'\''$//')
+
+            # Validate key and value
+            if ! is_valid_env_key "$key"; then
+                log_warning "Skipping invalid env key: $key"
+                skipped_count=$((skipped_count + 1))
+                continue
             fi
-        fi
-        
-        # Replace $$SERVER_ADDR$$ placeholder
-        line="${line//\$\$SERVER_ADDR\$\$/$local_ip}"
-        
-        log_debug "Line $line_count: After replacement: $line"
-        
-        # Export directly: export "KEY=VALUE"
-        if export "$line" 2>&1; then
-            log_info "Exported: $line"
+            if ! is_allowed_key "$key"; then
+                log_warning "Skipping disallowed env key: $key"
+                skipped_count=$((skipped_count + 1))
+                continue
+            fi
+            if ! is_safe_env_value "$value"; then
+                log_warning "Skipping unsafe value for key: $key"
+                skipped_count=$((skipped_count + 1))
+                continue
+            fi
+
+            processed_count=$((processed_count + 1))
+            log_debug "Line $line_count: Before replacement: [REDACTED]"
+
+            # Apply placeholder replacements directly to the value
+            if [ "$local_mode" = true ]; then
+                # Local mode: Replace domain placeholders with local IP and ports
+                value="${value//\$\$BACKEND_DOMAIN\$\$/$local_ip:$backend_port}"
+                value="${value//\$\$FRONTEND_DOMAIN\$\$/$local_ip:$frontend_port}"
+            else
+                # Non-local mode: Replace domain placeholders with DEV_BASE_URL domain
+                if [ -n "$dev_base_domain" ]; then
+                    value="${value//\$\$BACKEND_DOMAIN\$\$/$dev_base_domain}"
+                    value="${value//\$\$FRONTEND_DOMAIN\$\$/$dev_base_domain}"
+                else
+                    value="${value//\$\$BACKEND_DOMAIN\$\$/\/}"
+                    value="${value//\$\$FRONTEND_DOMAIN\$\$/\/}"
+                fi
+            fi
+
+            # Replace $$SERVER_ADDR$$ placeholder
+            value="${value//\$\$SERVER_ADDR\$\$/$local_ip}"
+
+            log_debug "Line $line_count: After replacement: key=$key (value redacted)"
+
+            # Export without revealing value
+            if export "$key=$value" 2>&1; then
+                log_info "Exported: $key"
+            else
+                log_error "Failed to export: $key (exit code: $?)"
+            fi
         else
-            log_error "Failed to export: $line (exit code: $?)"
+            log_warning "Skipping malformed env line: $line"
+            skipped_count=$((skipped_count + 1))
         fi
     done <<< "$env_content"
     
     log_debug "Finished processing. Total lines: $line_count, Processed: $processed_count, Skipped: $skipped_count"
     
-    # Debug: Show all exported environment variables (extract variable names from env_content)
-    log_debug "All exported environment variables:"
+    # Debug: Show all exported environment variable names (no values)
+    log_debug "All exported environment variable names:"
     while IFS= read -r line || [ -n "$line" ]; do
         if [[ "$line" =~ ^[[:space:]]*([^=]+)= ]]; then
             local var_name="${BASH_REMATCH[1]}"
             var_name=$(echo "$var_name" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
-            if [ -n "${!var_name}" ]; then
-                log_debug "  $var_name=${!var_name}"
+            if [ -n "${!var_name+x}" ]; then
+                log_debug "  $var_name"
             fi
         fi
     done <<< "$env_content"
 }
 
-# Process environment variables with placeholder replacement
+# Process environment variables with placeholder replacement from file
 process_env_with_placeholders_from_file() {
     local env_file=$1
     local local_ip=$2
@@ -701,19 +766,17 @@ process_env_with_placeholders_from_file() {
                 dev_base_url="${BASH_REMATCH[1]}"
                 # Remove leading/trailing whitespace and quotes
                 dev_base_url=$(echo "$dev_base_url" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
-                dev_base_url=$(echo "$dev_base_url" | sed 's/^["'\'']//;s/["'\'']$//')
+                dev_base_url=$(echo "$dev_base_url" | sed 's/^"//;s/"$//')
 
                 # Extract domain part (remove protocol if present)
-                # DEV_BASE_URL format: protocol://domain[:port] or domain[:port] (no path)
-                # Remove protocol to get domain (and port if present)
                 if [[ "$dev_base_url" =~ ^https?://(.+)$ ]]; then
                     dev_base_domain="${BASH_REMATCH[1]}"
                 else
                     dev_base_domain="$dev_base_url"
                 fi
 
-                log_info "Found DEV_BASE_URL: $dev_base_url"
-                log_info "Extracted domain: $dev_base_domain"
+                log_info "Found DEV_BASE_URL: [REDACTED]"
+                log_info "Extracted domain: [REDACTED]"
                 break
             fi
         done < "$env_file"
@@ -737,7 +800,7 @@ process_env_with_placeholders_from_file() {
             value=$(echo "$value" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
 
             # Remove quotes if present
-            value=$(echo "$value" | sed 's/^["'\'']//;s/["'\'']$//')
+            value=$(echo "$value" | sed 's/^"//;s/"$//')
 
             # Skip BACKEND_PORT and FRONTEND_PORT as they are set manually
             if [ "$key" = "BACKEND_PORT" ] || [ "$key" = "FRONTEND_PORT" ]; then
@@ -745,40 +808,36 @@ process_env_with_placeholders_from_file() {
                 continue
             fi
 
+            # Validate key and value
+            if ! is_valid_env_key "$key"; then
+                log_warning "Skipping invalid env key: $key"
+                continue
+            fi
+            if ! is_allowed_key "$key"; then
+                log_warning "Skipping disallowed env key: $key"
+                continue
+            fi
+            if ! is_safe_env_value "$value"; then
+                log_warning "Skipping unsafe value for key: $key"
+                continue
+            fi
+
             # Apply placeholder replacements
-            # log_info "Before replacement: $key=$value"
-
             if [ "$local_mode" = true ]; then
-                # Local mode: Replace domain placeholders with local IP and ports
-                # log_info "DEBUG: Local mode replacement - frontend_port='$frontend_port'"
-                # 1. Replace $$BACKEND_DOMAIN$$ with local IP and backend port
                 value="${value//\$\$BACKEND_DOMAIN\$\$/$local_ip:$backend_port}"
-                # log_info "DEBUG: After BACKEND_DOMAIN replacement: $key=$value"
-
-                # 2. Replace $$FRONTEND_DOMAIN$$ with local IP and frontend port
-                # log_info "DEBUG: Before FRONTEND_DOMAIN replacement - frontend_port='$frontend_port', value='$value'"
                 value="${value//\$\$FRONTEND_DOMAIN\$\$/$local_ip:$frontend_port}"
-                # log_info "DEBUG: After FRONTEND_DOMAIN replacement: $key=$value"
             else
-                # Non-local mode: Replace domain placeholders with DEV_BASE_URL domain
-                # dev_base_domain was extracted in the first pass (or remains empty if not found)
                 if [ -n "$dev_base_domain" ]; then
-                    # log_info "DEBUG: Non-local mode replacement using DEV_BASE_URL domain='$dev_base_domain'"
                     value="${value//\$\$BACKEND_DOMAIN\$\$/$dev_base_domain}"
                     value="${value//\$\$FRONTEND_DOMAIN\$\$/$dev_base_domain}"
-                    # log_info "DEBUG: After domain replacement: $key=$value"
                 else
-                    # log_warning "DEV_BASE_URL not found, using '/' as fallback"
                     value="${value//\$\$BACKEND_DOMAIN\$\$/\/}"
                     value="${value//\$\$FRONTEND_DOMAIN\$\$/\/}"
                 fi
             fi
 
-            # log_info "After replacement: $key=$value"
-
-            # Export the processed environment variable
             export "$key=$value"
-            log_info "Exported: $key=$value"
+            log_info "Exported: $key"
         fi
     done < "$env_file"
 }
@@ -1060,23 +1119,23 @@ parse_arguments() {
     export USERNAME
     export ENV_FILENAME
     
-    # Log the values of S2S API parameters
+    # Log the presence of S2S API parameters without revealing secrets
     if [ -z "$S2S_JWT_ACCESS_TOKEN" ]; then
-        log_info "S2S_JWT_ACCESS_TOKEN is empty"
+        log_info "S2S_JWT_ACCESS_TOKEN_present=false"
     else
-        log_info "S2S_JWT_ACCESS_TOKEN is set (length: ${#S2S_JWT_ACCESS_TOKEN})"
+        log_info "S2S_JWT_ACCESS_TOKEN_present=true"
     fi
     
     if [ -z "$S2S_JWT_BASE_URL" ]; then
-        log_info "S2S_JWT_BASE_URL is empty"
+        log_info "S2S_JWT_BASE_URL_present=false"
     else
-        log_info "S2S_JWT_BASE_URL is set: $S2S_JWT_BASE_URL"
+        log_info "S2S_JWT_BASE_URL_present=true"
     fi
     
     if [ -z "$S2S_APP_ID" ]; then
-        log_info "S2S_APP_ID is empty"
+        log_info "S2S_APP_ID_present=false"
     else
-        log_info "S2S_APP_ID is set: $S2S_APP_ID"
+        log_info "S2S_APP_ID_present=true"
     fi
 }
 
@@ -1113,10 +1172,10 @@ main() {
         LOCAL_IP=$(get_local_ip)
         log_info "Detected local IP address: $LOCAL_IP"
     fi
-    
+
     # Detect package manager with functionality test
     PACKAGE_MANAGER=""
-    
+
     # Test pnpm first
     if command -v pnpm >/dev/null 2>&1; then
         log_info "Testing pnpm functionality..."
@@ -1165,7 +1224,6 @@ main() {
     log_info "Pre-installing frontend dependencies..."
     cd "$FRONTEND_DIR"
     $PACKAGE_MANAGER install
-    $PACKAGE_MANAGER install @metagptx/web-sdk@latest
     log_success "Frontend dependencies installed successfully"
     
     cd "$BACKEND_DIR"
@@ -1218,5 +1276,7 @@ main() {
     fi
 }
 
-# Run main function
-main "$@"
+# Only run main if script is executed directly (allow sourcing for tests)
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main "$@"
+fi
