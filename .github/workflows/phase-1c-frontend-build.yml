@@ -1,0 +1,59 @@
+name: "Phase 1C - Frontend build validation"
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'frontend/package.json'
+      - 'frontend/pnpm-lock.yaml'
+      - 'frontend/vite.config.*'
+  push:
+    branches:
+      - main
+    paths:
+      - 'frontend/package.json'
+      - 'frontend/pnpm-lock.yaml'
+      - 'frontend/vite.config.*'
+
+jobs:
+  build:
+    name: Frontend build (Phase 1C)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Enable Corepack and prepare pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
+
+      - name: Print Node and pnpm versions
+        run: |
+          node --version
+          pnpm --version
+
+      - name: Install dependencies (frozen lockfile)
+        working-directory: frontend
+        run: pnpm install --frozen-lockfile
+
+      - name: Build frontend
+        working-directory: frontend
+        run: pnpm run build
+
+      - name: Verify dist exists and print concise listing
+        working-directory: frontend
+        run: |
+          if [ -d dist ]; then
+            echo "dist exists"
+            ls -la dist | sed -n '1,200p'
+          else
+            echo "ERROR: frontend/dist not found" >&2
+            exit 1
+          fi
